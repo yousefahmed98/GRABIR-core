@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'GRABIR.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'GRABIR-DB',
+        'NAME': 'GRABIR_DB',
         'USER':'postgres',
         'PASSWORD': 'admin',
     },
