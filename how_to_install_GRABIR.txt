@@ -1,0 +1,22 @@
+1- git clone https://github.com/yousefahmed98/GRABIR-core.git
+2- Install python version ‘3.8.6’ from https://www.python.org/downloads/release/python-386/
+3- Create virtual environment,
+	Command: “python -m venv venv”
+	then: activate the virtual environment
+4- Install requirement packages for the project,
+	Command: “pip install -r requirements.txt”.
+5- Install postgres from “https://www.postgresql.org/download/”.
+6- Install pgAdmin from “https://www.pgadmin.org/download/” then open it.
+	create new Database user: postgres password :admin name: GRABIR-DB
+7- open settings.py add this in database section
+	DATABASES = {
+    		'default': {
+        		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        		'NAME': 'GRABIR-DB',
+        		'USER':'postgres',
+        		'PASSWORD': 'admin',
+    		},
+	}
+8- python manage.py migrate
+9- python manage.py runserver
+
