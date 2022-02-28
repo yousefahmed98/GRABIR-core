@@ -79,6 +79,9 @@ DATABASES = {
         'NAME': 'GRABIR_DB',
         'USER':'postgres',
         'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        
     },
 }
 
