@@ -3,16 +3,10 @@ from django.contrib.auth.admin import UserAdmin
 
 from .models import CustomUser,Tag,Post,Offer,OfferStatus,Deal,PhoneNumber
 
-
-# class CustomPhoneNumber(admin.ModelAdmin):
-#    fieldsets = (
-#         ["phone info", {'fields': ["phone",]}],
-#     )
-
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = (
-        'username', 'email', 'first_name', 'last_name', 'is_staff','region',)
+        'username', 'email', 'first_name', 'last_name', 'is_staff','region','passport_img',)
 
     fieldsets = (
         (None, {
@@ -43,7 +37,7 @@ class CustomUserAdmin(UserAdmin):
 
 class CustomTag(admin.ModelAdmin):
     list_display = (
-        'username', 'email', 'first_name', 'last_name', 'is_staff','region')
+        'username', 'email', 'first_name', 'last_name', 'is_staff','region','passport_img',)
 
 admin.site.register(CustomUser,CustomUserAdmin)
 admin.site.register(Tag)

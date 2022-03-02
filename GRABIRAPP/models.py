@@ -5,7 +5,7 @@ from django.core.validators import RegexValidator
 # Create your models here.
 class CustomUser(AbstractUser):
     region = models.CharField(max_length=200)
-    passport_img = models.FileField(upload_to='images/', null=True, verbose_name="")
+    passport_img = models.FileField(upload_to='images/', null=True, verbose_name="passport image")
 class Tag(models.Model):
     class Meta:
         ordering = ['pk']
