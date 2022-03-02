@@ -7,42 +7,10 @@ from .models import Post
 from .serializers import PostSerializer
 # Create your views here.
 
-# initialize routes function
-@api_view(['GET'])
-def getRoutes(request):
-    routes = [
-        {
-            'Endpoint': '/posts/',
-            'method': 'GET',
-            'body': None,
-            'description': 'Returns an array of posts'
-        },
-        {
-            'Endpoint': '/notes/id',
-            'method': 'GET',
-            'body': None,
-            'description': 'Returns a single note object'
-        },
-        {
-            'Endpoint': '/posts/create/',
-            'method': 'POST',
-            'body': {'body': ""},
-            'description': 'Creates new post with data sent in post request'
-        },
-        {
-            'Endpoint': '/posts/id/update/',
-            'method': 'PUT',
-            'body': {'body': ""},
-            'description': 'Creates an existing post with data sent in post request'
-        },
-        {
-            'Endpoint': '/posts/id/delete/',
-            'method': 'DELETE',
-            'body': None,
-            'description': 'Deletes and exiting post'
-        },
-    ]
-    return Response(routes)
+# # initialize routes function
+# @api_view(['GET'])
+# def getRoutes(request):
+#     return Response(routes)
 
 # ===============================================================POST===============================================================
 
