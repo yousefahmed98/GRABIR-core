@@ -4,8 +4,8 @@ from django.shortcuts import redirect, render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import CustomUser, Post, Offer
-from .serializers import PostSerializer, UserSerializer, OfferSerializer
+from .models import CustomUser, Post, Offer, Tag, PhoneNumber 
+from .serializers import PostSerializer, UserSerializer, OfferSerializer, TagsSerializer, PhoneNumberSerializer
 
 # Create your views here.
 
@@ -149,5 +149,92 @@ def deleteOffer(request, offer_id):
     offer = Offer.objects.get(id=offer_id)
     offer.delete()
     return Response('Offer Deleted successfully!')
+# ---------------------------------------------------------------- 
+
+
+# ===============================================================Tags===============================================================
+
+# ----------------------------------------------------------------
+@api_view(['GET'])
+def getTags(request):
+    tags = Tag.objects.all()
+    # many=True because function will return more than one object
+    tags_serializer = TagsSerializer(tags, many=True)
+    return Response(tags_serializer.data)
+# ----------------------------------------------------------------
+@api_view(['GET'])
+def getOneTag(request, tag_id):
+    get_tag = Tag.objects.get(id=tag_id)
+    # many=False because function will return one object
+    tag_serializer = TagsSerializer(get_tag, many=False)
+    return Response(tag_serializer.data)
+# ----------------------------------------------------------------
+@api_view(['POST'])
+def addTag(request):
+    tag_ser = TagsSerializer(data=request.data)
+    if tag_ser.is_valid():
+        tag_ser.save()
+        return Response(tag_ser.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(tag_ser.errors, status=status.HTTP_400_BAD_REQUEST)
+# ----------------------------------------------------------------
+@api_view(['POST'])
+def editTag(request, tag_id):
+    tag = Tag.objects.get(id=tag_id)
+    tag_ser = TagsSerializer(data=request.data, instance=tag)
+    if tag_ser.is_valid():
+        tag_ser.save()
+        return Response(tag_ser.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(tag_ser.errors, status=status.HTTP_400_BAD_REQUEST)
+# ---------------------------------------------------------------- 
+@api_view(['DELETE'])
+def deleteTag(request, tag_id):
+    tag = Tag.objects.get(id=tag_id)
+    tag.delete()
+    return Response('tag Deleted successfully!')
+# ----------------------------------------------------------------
+
+# ===============================================================PhoneNumber===============================================================
+
+# ----------------------------------------------------------------
+@api_view(['GET'])
+def getPhones(request):
+    phones = PhoneNumber.objects.all()
+    # many=True because function will return more than one object
+    phones_serializer = PhoneNumberSerializer(phones, many=True)
+    return Response(phones_serializer.data)
+# ----------------------------------------------------------------
+@api_view(['GET'])
+def getOnePhone(request, phone_id):
+    get_phone = PhoneNumber.objects.get(id=phone_id)
+    # many=False because function will return one object
+    phone_serializer = PhoneNumberSerializer(get_phone, many=False)
+    return Response(phone_serializer.data)
+# ----------------------------------------------------------------
+@api_view(['POST'])
+def addPhone(request):
+    phone_ser = PhoneNumberSerializer(data=request.data)
+    if phone_ser.is_valid():
+        phone_ser.save()
+        return Response(phone_ser.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(phone_ser.errors, status=status.HTTP_400_BAD_REQUEST)
+# ----------------------------------------------------------------
+@api_view(['POST'])
+def editPhone(request, phone_id):
+    phone = PhoneNumber.objects.get(id=phone_id)
+    phone_ser = PhoneNumberSerializer(data=request.data, instance=phone)
+    if phone_ser.is_valid():
+        phone_ser.save()
+        return Response(phone_ser.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(phone_ser.errors, status=status.HTTP_400_BAD_REQUEST)
+# ---------------------------------------------------------------- 
+@api_view(['DELETE'])
+def deletePhone(request, phone_id):
+    phone = PhoneNumber.objects.get(id=phone_id)
+    phone.delete()
+    return Response('Phone Deleted successfully!')
 # ---------------------------------------------------------------- 
 

@@ -25,4 +25,21 @@ urlpatterns = [
     path('add-offer', views.addOffer, name='add_offer'),
     path('edit-offer/<str:offer_id>', views.editOffer, name='edit_offer'),
     path('delete-offer/<str:offer_id>', views.deleteOffer, name='delete_offer'),
+
+   # ------------------------Tags------------------------
+    path('tags/', views.getTags, name='get_tags'),
+    path('tags/<str:tag_id>', views.getOneTag, name="get_one_tag"),
+    path('add-tag', views.addTag, name='add_tag'),
+    path('edit-tag/<str:tag_id>', views.editTag, name='edit_tag'),
+    path('delete-tag/<str:tag_id>', views.deleteTag, name='delete_tag'),
+
+    # ------------------------Phone------------------------
+    path('phones/', views.getPhones, name='get_phones'),
+    path('phones/<str:phone_id>', views.getOnePhone, name="get_one_phone"),
+    path('add-phone', views.addPhone, name='add_phone'),
+    path('edit-phone/<str:phone_id>', views.editPhone, name='edit_phone'),
+    path('delete-phone/<str:phone_id>', views.deletePhone, name='delete_phone'),
+
+
 ]
+
