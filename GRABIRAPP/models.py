@@ -22,6 +22,7 @@ class Post(models.Model):
     description = models.CharField(max_length=300)
     postpicture = models.FileField(upload_to='images/', null=True, verbose_name="")
     created_at = models.DateField(auto_now_add=True,null=True)
+    updated_at = models.DateTimeField(auto_now=True,null=True)
     from_region= models.CharField(null=True,max_length=50)
     to   = models.CharField(null=True,max_length=50)
     tags = models.ManyToManyField(Tag, through='PostTags')

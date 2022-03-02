@@ -34,10 +34,11 @@ class CustomUserAdmin(UserAdmin):
     )
     
 
-
 class CustomTag(admin.ModelAdmin):
     list_display = (
         'username', 'email', 'first_name', 'last_name', 'is_staff','region','passport_img',)
+
+
 
 admin.site.register(CustomUser,CustomUserAdmin)
 admin.site.register(Tag)

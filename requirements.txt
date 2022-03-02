@@ -1,5 +1,5 @@
 Django==4.0.2
 psycopg2
 django-phonenumber-field[phonenumberslite]
-
+djangorestframework
 # python manage.py makemigrations GRABIRAPP 
