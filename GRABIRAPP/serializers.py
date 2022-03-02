@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from .models import Post, CustomUser, Offer ,Tag, PhoneNumber
+from .models import Deal, Post, CustomUser, Offer ,Tag, PhoneNumber
 
 class PostSerializer (ModelSerializer):
     class Meta:
@@ -18,7 +18,7 @@ class OfferSerializer (ModelSerializer):
         model = Offer
         fields = '__all__'
 
-class TagsSerializer (ModelSerializer):
+class TagSerializer (ModelSerializer):
     class Meta:
         model = Tag
         fields = '__all__'
@@ -28,5 +28,9 @@ class PhoneNumberSerializer (ModelSerializer):
         model = PhoneNumber
         fields = '__all__'
 
-        
+       
+class DealSerializer (ModelSerializer):
+    class Meta:
+        model = Deal
+        fields = '__all__' 
         

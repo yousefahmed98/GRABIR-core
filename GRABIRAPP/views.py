@@ -3,9 +3,9 @@ from rest_framework import status
 from django.shortcuts import redirect, render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
-from .models import CustomUser, Post, Offer, Tag, PhoneNumber 
-from .serializers import PostSerializer, UserSerializer, OfferSerializer, TagsSerializer, PhoneNumberSerializer
+from rest_framework import viewsets
+from .models import CustomUser, Deal, Post, Offer, Tag, PhoneNumber 
+from .serializers import DealSerializer, PostSerializer, UserSerializer, OfferSerializer, TagSerializer, PhoneNumberSerializer
 
 # Create your views here.
 
@@ -159,19 +159,19 @@ def deleteOffer(request, offer_id):
 def getTags(request):
     tags = Tag.objects.all()
     # many=True because function will return more than one object
-    tags_serializer = TagsSerializer(tags, many=True)
+    tags_serializer = TagSerializer(tags, many=True)
     return Response(tags_serializer.data)
 # ----------------------------------------------------------------
 @api_view(['GET'])
 def getOneTag(request, tag_id):
     get_tag = Tag.objects.get(id=tag_id)
     # many=False because function will return one object
-    tag_serializer = TagsSerializer(get_tag, many=False)
+    tag_serializer = TagSerializer(get_tag, many=False)
     return Response(tag_serializer.data)
 # ----------------------------------------------------------------
 @api_view(['POST'])
 def addTag(request):
-    tag_ser = TagsSerializer(data=request.data)
+    tag_ser = TagSerializer(data=request.data)
     if tag_ser.is_valid():
         tag_ser.save()
         return Response(tag_ser.data, status=status.HTTP_201_CREATED)
@@ -181,7 +181,7 @@ def addTag(request):
 @api_view(['POST'])
 def editTag(request, tag_id):
     tag = Tag.objects.get(id=tag_id)
-    tag_ser = TagsSerializer(data=request.data, instance=tag)
+    tag_ser = TagSerializer(data=request.data, instance=tag)
     if tag_ser.is_valid():
         tag_ser.save()
         return Response(tag_ser.data, status=status.HTTP_201_CREATED)
@@ -237,4 +237,27 @@ def deletePhone(request, phone_id):
     phone.delete()
     return Response('Phone Deleted successfully!')
 # ---------------------------------------------------------------- 
+# using viewset 
+class UserViewset(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+
+class PostViewset(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class OfferViewset(viewsets.ModelViewSet):
+    queryset = Offer.objects.all()
+    serializer_class = OfferSerializer
+class TagViewset(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+class DealViewset(viewsets.ModelViewSet):
+    queryset = Deal.objects.all()
+    serializer_class = DealSerializer
+
+class PhoneNumberViewset(viewsets.ModelViewSet):
+    queryset = PhoneNumber.objects.all()
+    serializer_class = PhoneNumberSerializer
 

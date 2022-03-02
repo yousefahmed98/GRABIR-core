@@ -15,8 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from GRABIRAPP import urls, views
+
+
+router = DefaultRouter()
+router.register("users",views.UserViewset)
+router.register('posts',views.PostViewset)
+router.register("tags",views.TagViewset)
+router.register("offers",views.OfferViewset)
+router.register("phoneNumbers",views.PhoneNumberViewset)
+router.register("offers",views.OfferViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('GRABIRAPP.urls'))
+    path('', include('GRABIRAPP.urls')),
+    path('GRAPBIR/', include(router.urls))
 ]
