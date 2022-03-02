@@ -3,8 +3,10 @@ from rest_framework import status
 from django.shortcuts import redirect, render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Post,Offer
-from .serializers import PostSerializer, OfferSerializer
+
+from .models import CustomUser, Post, Offer
+from .serializers import PostSerializer, UserSerializer, OfferSerializer
+
 # Create your views here.
 
 # # initialize routes function
@@ -57,16 +59,64 @@ def deletePost(request, post_id):
     post = Post.objects.get(id=post_id)
     post.delete()
     return Response('Post Deleted successfully!')
-# ---------------------------------------------------------------- 
-# ---------------------------------------------------------------- 
 
+
+# ===============================================================User===============================================================
+
+# ----------------------------------------------------------------
+@api_view(['GET'])
+def getUsers(request):
+    users = CustomUser.objects.all()
+    # many=True because function will return more than one object
+    users_serializer = UserSerializer(users, many=True)
+    return Response(users_serializer.data)
+
+# ----------------------------------------------------------------
+@api_view(['GET'])
+def getOneUser(request, user_id):
+    get_user = CustomUser.objects.get(id=user_id)
+    # many=False because function will return one object
+    user_serializer = UserSerializer(get_user, many=False)
+    return Response(user_serializer.data)
+
+# ----------------------------------------------------------------
+@api_view(['POST'])
+def addUser(request):
+    user_ser = UserSerializer(data=request.data)
+    if user_ser.is_valid():
+        user_ser.save()
+        return Response(user_ser.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(user_ser.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+# ---------------------------------------------------------------- 
+@api_view(['POST'])
+def editUser(request, user_id):
+    student = CustomUser.objects.get(id=user_id)
+    user_ser = UserSerializer(data=request.data, instance=student)
+    if user_ser.is_valid():
+        user_ser.save()
+        return Response(user_ser.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(user_ser.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# ---------------------------------------------------------------- 
+@api_view(['DELETE'])
+def deleteUser(request, user_id):
+    user = CustomUser.objects.get(id=user_id)
+    user.delete()
+    return Response('User Deleted successfully!')
+
+
+# ===============================================================Offer===============================================================
+
+# ----------------------------------------------------------------
 @api_view(['GET'])
 def getOffers(request):
     offers = Offer.objects.all()
     # many=True because function will return more than one object
     offers_serializer = OfferSerializer(offers, many=True)
     return Response(offers_serializer.data)
-
 # ----------------------------------------------------------------
 @api_view(['GET'])
 def getOneOffer(request, offer_id):
@@ -100,3 +150,4 @@ def deleteOffer(request, offer_id):
     offer.delete()
     return Response('Offer Deleted successfully!')
 # ---------------------------------------------------------------- 
+
