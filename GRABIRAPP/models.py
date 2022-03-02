@@ -20,7 +20,7 @@ class Post(models.Model):
         ordering = ['pk']
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=300)
-    postpicture = models.FileField(upload_to='images/', null=True, verbose_name="")
+    postpicture = models.FileField(upload_to='images/', null=True, verbose_name="Post Picture")
     created_at = models.DateField(auto_now_add=True,null=True)
     updated_at = models.DateTimeField(auto_now=True,null=True)
     from_region= models.CharField(null=True,max_length=50)
