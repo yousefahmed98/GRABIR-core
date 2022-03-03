@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'GRABIRAPP',
     'rest_framework',
+    'django_filters',
     'phonenumber_field',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'GRABIRAPP.apps.AppConfig',
+    'GRABIR.apps.base',
+    'GRABIR.apps.posts',
+    "GRABIR.apps.deals",
+    "GRABIR.apps.offers"
 ]
 
 MIDDLEWARE = [
@@ -131,5 +134,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'GRABIRAPP.CustomUser'
+AUTH_USER_MODEL = 'base.CustomUser'
 

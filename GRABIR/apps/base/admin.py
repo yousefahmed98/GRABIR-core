@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from phonenumbers import PhoneNumber
+from GRABIR.apps.base.models import CustomUser
 
-from .models import CustomUser,Tag,Post,Offer,OfferStatus,Deal,PhoneNumber
-
+# Register your models here.
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = (
@@ -41,9 +42,3 @@ class CustomTag(admin.ModelAdmin):
 
 
 admin.site.register(CustomUser,CustomUserAdmin)
-admin.site.register(Tag)
-admin.site.register(Post)
-admin.site.register(Offer)
-admin.site.register(OfferStatus)
-admin.site.register(PhoneNumber)
-admin.site.register(Deal)
