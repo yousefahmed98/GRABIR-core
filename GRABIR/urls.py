@@ -14,21 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from django.conf.urls import include
 from rest_framework.routers import DefaultRouter
-from GRABIRAPP import urls, views
+from GRABIR.apps.base import urls  as base_urls
+from GRABIR.apps.deals import urls as deals_urls
+from GRABIR.apps.offers import urls as offers_urls
+from GRABIR.apps.payments import urls as payments_urls
+from GRABIR.apps.posts import urls as posts_urls
 
-
-router = DefaultRouter()
-router.register("users",views.UserViewset)
-router.register('posts',views.PostViewset)
-router.register("tags",views.TagViewset)
-router.register("offers",views.OfferViewset)
-router.register("phoneNumbers",views.PhoneNumberViewset)
-router.register("offers",views.OfferViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('GRABIRAPP.urls')),
-    path('GRAPBIR/', include(router.urls))
+    path('base/', include( base_urls, namespace='base')),
+    path('deals/', include( deals_urls, namespace='deals')),
+    path('offers/', include( offers_urls, namespace='offers')),
+    path('posts/', include( posts_urls, namespace='posts')),
 ]
