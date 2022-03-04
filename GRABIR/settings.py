@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'GRABIR.apps.base',
     'GRABIR.apps.posts',
     "GRABIR.apps.deals",
-    "GRABIR.apps.offers"
+    "GRABIR.apps.offers",
+    "GRABIR.apps.payments",
 ]
 
 MIDDLEWARE = [
