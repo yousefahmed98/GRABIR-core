@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    "corsheaders",
     'django_filters',
     'phonenumber_field',
     'django.contrib.admin',
@@ -43,12 +44,14 @@ INSTALLED_APPS = [
     'GRABIR.apps.base',
     'GRABIR.apps.posts',
     "GRABIR.apps.deals",
-    "GRABIR.apps.offers"
+    "GRABIR.apps.offers",
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -136,3 +139,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'base.CustomUser'
 
+CORS_ALLOW_ALL_ORIGINS = True
