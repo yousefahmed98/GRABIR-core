@@ -11,3 +11,9 @@ class PhoneNumberSerializer (ModelSerializer):
     class Meta:
         model = PhoneNumber
         fields = '__all__'
+
+
+class RegisterSerializer(ModelSerializer):
+     class Meta:
+        model = CustomUser
+        fields = ['email', 'username', 'password']
