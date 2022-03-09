@@ -34,7 +34,4 @@ urlpatterns = [
     path('deals/', include( deals_urls, namespace='deals')),
     path('offers/', include( offers_urls, namespace='offers')),
     path('posts/', include( posts_urls, namespace='posts')),  
-    path('email-verify/', VerifyEmail.as_view(), name="email-verify"),  
-
-
 ]
