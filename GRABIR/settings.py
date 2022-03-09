@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-_s7%9hi40gg(aen^$dh)kws)ulzk5x-ts-n=an5tnb_*w7^5rp
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'GRABIR.apps.base',
     'GRABIR.apps.posts',
     "GRABIR.apps.deals",
-    "GRABIR.apps.offers"
+    "GRABIR.apps.offers",
+    "GRABIR.apps.payments",
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
@@ -94,6 +96,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'GRABIR.urls'
@@ -128,7 +131,6 @@ DATABASES = {
         'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '',
-
     },
 }
 

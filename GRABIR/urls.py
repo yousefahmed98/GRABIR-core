@@ -33,5 +33,6 @@ urlpatterns = [
     path('base/', include( base_urls, namespace='base')),
     path('deals/', include( deals_urls, namespace='deals')),
     path('offers/', include( offers_urls, namespace='offers')),
-    path('posts/', include( posts_urls, namespace='posts')),  
+    path('posts/', include( posts_urls, namespace='posts')),
+    path('payments/', include( payments_urls, namespace='payments')),
 ]
