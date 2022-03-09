@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
+
 from GRABIR.apps.base import urls  as base_urls
+from GRABIR.apps.base.views import VerifyEmail
 from GRABIR.apps.deals import urls as deals_urls
 from GRABIR.apps.offers import urls as offers_urls
 from GRABIR.apps.payments import urls as payments_urls
@@ -27,6 +30,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('auth', obtain_auth_token),
     path('admin/', admin.site.urls),
     path('base/', include( base_urls, namespace='base')),
     path('deals/', include( deals_urls, namespace='deals')),
