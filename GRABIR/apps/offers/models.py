@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from GRABIR.apps.base.models import CustomUser
 
@@ -18,6 +19,7 @@ class Offer(models.Model):
     to_region = models.CharField(null=True, max_length=50)
     price = models.FloatField()
     delivery_date = models.DateField(auto_now_add=True, null=True)
+    created_at = models.DateTimeField(default=datetime.now(), blank=False)
     post = models.ForeignKey(
         Post, related_name="offer_post", on_delete=models.CASCADE)
     status = models.ForeignKey(
