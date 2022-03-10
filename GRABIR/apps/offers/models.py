@@ -5,12 +5,12 @@ from GRABIR.apps.base.models import CustomUser
 from GRABIR.apps.posts.models import Post
 
 
-class OfferStatus(models.Model):
-    LOCATOR_YES_NO_CHOICES = ((None, ''), (True, 'Yes'), (False, 'No'))
-    # status = models.BooleanField(nul)
-    status = models.BooleanField(choices=LOCATOR_YES_NO_CHOICES,
-                      max_length=3,
-                      blank=True, null=True, default=None,)
+# class OfferStatus(models.Model):
+#     LOCATOR_YES_NO_CHOICES = ((None, ''), (True, 'Yes'), (False, 'No'))
+#     # status = models.BooleanField(nul)
+#     status = models.BooleanField(choices=LOCATOR_YES_NO_CHOICES,
+#                                  max_length=3,
+#                                  blank=True, null=True, default=None,)
 
 
 class Offer(models.Model):
@@ -22,8 +22,9 @@ class Offer(models.Model):
     created_at = models.DateTimeField(default=datetime.now(), blank=False)
     post = models.ForeignKey(
         Post, related_name="offer_post", on_delete=models.CASCADE)
-    status = models.ForeignKey(
-        OfferStatus, related_name="offer_status", on_delete=models.CASCADE, null=True)
+    status = models.BooleanField(
+        max_length=3,
+        blank=True, null=True)
     offer_owner = models.ForeignKey(
         CustomUser, related_name="offer_user", on_delete=models.CASCADE)
 
