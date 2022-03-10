@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from datetime import timedelta
+import os
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,6 +36,7 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     'django_filters',
+    'rest_framework.authtoken',
     'phonenumber_field',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +50,44 @@ INSTALLED_APPS = [
     "GRABIR.apps.offers",
     "GRABIR.apps.payments",
 ]
+
+AUTH_USER_MODEL = 'authentication.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    # 'DEFAULT_PERMISSION_CLASSES':
+    # ['rest_framework.permissions.IsAuthenticated'],
+    'NON_FIELD_ERRORS_KEY': 'error',
+}
+
+# JWT TOKEN SETTINGS
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),
+    'REFRESH_TOKEN_LIFETIME': timedelta(hours=48),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(hours=1),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(hours=1),
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -143,3 +184,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'base.CustomUser'
 
 CORS_ALLOW_ALL_ORIGINS = True
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ITIemailPython@gmail.com'
+EMAIL_HOST_PASSWORD = 'ITIPASS123'
