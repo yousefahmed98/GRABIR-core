@@ -14,7 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include, re_path
+from django.views.generic import TemplateView
 from django.conf.urls import include
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
@@ -25,11 +26,16 @@ from GRABIR.apps.deals import urls as deals_urls
 from GRABIR.apps.offers import urls as offers_urls
 from GRABIR.apps.payments import urls as payments_urls
 from GRABIR.apps.posts import urls as posts_urls
+from GRABIR.apps.accounts import urls as accounts_urls
+
 # for post image
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('auth', include('djoser.urls')),
+    path('auth', include('djoser.urls.jwt')),
+
     path('auth', obtain_auth_token),
     path('admin/', admin.site.urls),
     path('base/', include( base_urls, namespace='base')),
@@ -37,5 +43,11 @@ urlpatterns = [
     path('offers/', include( offers_urls, namespace='offers')),
     path('posts/', include( posts_urls, namespace='posts')),
     path('payments/', include( payments_urls, namespace='payments')),
+    # path('accounts/', include('djoser.urls')),
+    # path('accounts/', include('djoser.urls.jwt')),
+
+
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]
