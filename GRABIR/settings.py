@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
+AUTHENTICATION_BACKENDS = ['GRABIR.apps.base.auth.EmailBackend']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
