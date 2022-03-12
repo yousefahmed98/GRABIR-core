@@ -17,14 +17,16 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=300)
     postpicture = models.FileField(upload_to='images/', null=True, verbose_name="Post Picture")
-    # created_at = models.DateField(auto_now_add=True,null=True)
-    # updated_at = models.DateTimeField(auto_now=True,null=True)
     from_region= models.CharField(null=True,max_length=50)
     to   = models.CharField(null=True,max_length=50)
-    tags = models.ManyToManyField(Tag, through='PostTags')
+    tags = models.ManyToManyField(Tag,null=True)
     user = models.ForeignKey(CustomUser,related_name="post_user", on_delete=models.CASCADE)
     price = models.FloatField(null=True)
-
+    #
+    created_at = models.DateField(auto_now_add=True,null=True)
+    updated_at = models.DateTimeField(auto_now=True,null=True)
+    ownerName = models.CharField(null=True,max_length=50)
+    # ownerPhoto = models.FileField(upload_to='images/', null=True, verbose_name="Post Picture")
     
     def show_tags(self):
         return "\n".join([a.name for a in self.tags.all()])
@@ -32,8 +34,3 @@ class Post(models.Model):
     def __str__(self):
         return self.title + ' | ' + str(self.user)
 
-
-
-class PostTags(models.Model):
-    post = models.ForeignKey(Post,related_name="postTags_post", on_delete=models.CASCADE)
-    tag = models.ForeignKey(Tag, related_name="postTags_tag", on_delete=models.CASCADE)
