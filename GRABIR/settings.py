@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'GRABIR.apps.posts',
     "GRABIR.apps.deals",
     "GRABIR.apps.offers",
-    "GRABIR.apps.payments",
+    'payments',
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
@@ -173,6 +173,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
+
+SITE_URL = 'http://localhost:3000'
+STRIPE_SECRET_KEY = 'sk_test_51KcFV2IjgPyM0Uto8TP4hfJ8gV4qLGcEJZNhuJuPouuXTMXxb29IAw82re12pr80MYJ9JvRQXn8UCsFRMo1HOKna00zYmA2Rvq'
 # for post image 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'GRABIR-core')

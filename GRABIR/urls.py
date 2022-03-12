@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import include
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
@@ -23,7 +23,7 @@ from GRABIR.apps.base import urls  as base_urls
 from GRABIR.apps.base.views import VerifyEmail
 from GRABIR.apps.deals import urls as deals_urls
 from GRABIR.apps.offers import urls as offers_urls
-from GRABIR.apps.payments import urls as payments_urls
+# from GRABIR.apps.payments import urls as payments_urls
 from GRABIR.apps.posts import urls as posts_urls
 # for post image
 from django.conf.urls.static import static
@@ -36,6 +36,8 @@ urlpatterns = [
     path('deals/', include( deals_urls, namespace='deals')),
     path('offers/', include( offers_urls, namespace='offers')),
     path('posts/', include( posts_urls, namespace='posts')),
-    path('payments/', include( payments_urls, namespace='payments')),
+    # path('payments/', include( payments_urls, namespace='payments')),
+    path('api/stripe/', include('payments.urls')),
+
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
