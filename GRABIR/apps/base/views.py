@@ -29,6 +29,7 @@ class RegisterView(generics.GenericAPIView):
         serializer.save()
         user_data = serializer.data
         user = CustomUser.objects.get(email=user_data['email'])
+
         user_data["exp"] = datetime.datetime.now(
             tz=datetime.timezone.utc) + datetime.timedelta(seconds=120)
         token = jwt.encode(user_data, settings.SECRET_KEY,
@@ -43,7 +44,6 @@ class RegisterView(generics.GenericAPIView):
         Util.send_email(data)
         return Response(user_data, status=status.HTTP_201_CREATED)
 
-
 @api_view(['GET'])
 def VerifyEmail(request):
     if request.method == 'GET':
@@ -53,6 +53,7 @@ def VerifyEmail(request):
             user = CustomUser.objects.get(id=payload['id'])
             if not user.is_verified:
                 user.is_verified = True
+                user.is_active = True
                 user.save()
                 return Response({'email': 'Successfully activated'}, status=status.HTTP_200_OK)
             else:
