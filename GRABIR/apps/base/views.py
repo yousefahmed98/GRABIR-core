@@ -35,7 +35,7 @@ class RegisterView(generics.GenericAPIView):
                            algorithm='HS256').decode('utf-8')
         current_site = get_current_site(request).domain
         relativeLink = '/base/email-verify'
-        absurl = 'http://'+current_site+relativeLink+"?token="+str(token)
+        absurl = 'http://'+str(current_site)+str(relativeLink)+'?token='+str(token)
         email_body = 'Hi '+user.username + \
             ' Use the link below to verify your email \n' + absurl
         data = {'email_body': email_body, 'to_email': user.email,
