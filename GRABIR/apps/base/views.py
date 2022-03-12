@@ -30,9 +30,9 @@ class RegisterView(generics.GenericAPIView):
         token = jwt.encode(user_data,settings.SECRET_KEY, algorithm = 'HS256').decode('utf-8')
         current_site = get_current_site(request)
         relativeLink = 'base/email-verify'
-        print(current_site)
-        print(relativeLink)
-        absurl = 'http://'+current_site+relativeLink+"?token="+str(token)
+        print("=========================current site: ",current_site)
+        print("=========================relative link: ",relativeLink)
+        absurl = 'http://'+str(current_site)+'/'+str(relativeLink)+'?token='+str(token)
         print(absurl)
         email_body = 'Hi '+user.username + \
             ' Use the link below to verify your email \n' + absurl
@@ -40,6 +40,7 @@ class RegisterView(generics.GenericAPIView):
                 'email_subject': 'Verify your email'}      
         Util.send_email(data)
         return Response(user_data,status=status.HTTP_201_CREATED)
+    
 
 @api_view(['GET'])
 def VerifyEmail(request):
