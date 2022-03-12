@@ -53,6 +53,7 @@ def VerifyEmail(request):
             user = CustomUser.objects.get(id=payload['id'])
             if not user.is_verified:
                 user.is_verified = True
+                user.is_active = True
                 user.save()
                 return Response({'email': 'Successfully activated'}, status=status.HTTP_200_OK)
             else:
