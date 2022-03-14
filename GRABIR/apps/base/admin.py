@@ -7,7 +7,7 @@ from GRABIR.apps.base.models import CustomUser
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = (
-        'username', 'email', 'first_name', 'last_name', 'is_staff','region','passport_img',)
+        'username', 'email', 'first_name', 'last_name', 'is_staff','region','passport_img',"ProfilePic")
 
     fieldsets = (
         (None, {
@@ -29,15 +29,17 @@ class CustomUserAdmin(UserAdmin):
         }),
 
         ('Additional info', {
-            'fields': ('region','passport_img')
+            'fields': ('region','passport_img','ProfilePic')
         }),
+
+        
        
     )
     
 
 class CustomTag(admin.ModelAdmin):
     list_display = (
-        'username', 'email', 'first_name', 'last_name', 'is_staff','region','passport_img',)
+        'username', 'email', 'first_name', 'last_name', 'is_staff','region','passport_img',"ProfilePic")
 
 
 

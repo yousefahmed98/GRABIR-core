@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
+AUTHENTICATION_BACKENDS = ['GRABIR.apps.base.auth.EmailBackend']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -182,7 +183,6 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'GRABIR-core')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'base.CustomUser'
-
 CORS_ALLOW_ALL_ORIGINS = True
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

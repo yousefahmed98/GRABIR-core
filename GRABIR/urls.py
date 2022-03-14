@@ -37,5 +37,4 @@ urlpatterns = [
     path('offers/', include( offers_urls, namespace='offers')),
     path('posts/', include( posts_urls, namespace='posts')),
     path('payments/', include( payments_urls, namespace='payments')),
-
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
