@@ -11,8 +11,12 @@ class PostViewset(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer  
     Authentication_classes  = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 class TagsViewset(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer  
     # Authentication_classes  = [TokenAuthentication]
+    
+
+    
