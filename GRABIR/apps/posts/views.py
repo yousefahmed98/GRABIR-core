@@ -12,6 +12,13 @@ class PostViewset(viewsets.ModelViewSet):
     serializer_class = PostSerializer  
     Authentication_classes  = [TokenAuthentication]
 
+    def perform_create(self, serializer):
+        if self.request.user.is_authenticated:
+            instance = serializer.save(ownerProfilePic=self.request.user.ProfilePic)
+        else:
+            instance = serializer.save()
+        # return super().perform_create(serializer)
+
 class TagsViewset(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer  
