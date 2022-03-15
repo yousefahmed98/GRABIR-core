@@ -27,6 +27,8 @@ class Offer(models.Model):
         blank=True, null=True)
     offer_owner = models.ForeignKey(
         CustomUser, related_name="offer_user", on_delete=models.CASCADE)
-
+    offer_owner_name = models.CharField(null=True,max_length=50)
+    ownerProfilePic = models.FileField(upload_to='images/', null=True, verbose_name="image owner")
+    postPic = models.FileField(upload_to='images/', null=True, verbose_name="Post Picture")
     def __str__(self):
         return self.details
