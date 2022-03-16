@@ -18,8 +18,8 @@ class Offer(models.Model):
     from_region = models.CharField(null=True, max_length=50)
     to_region = models.CharField(null=True, max_length=50)
     price = models.FloatField()
-    delivery_date = models.DateField(auto_now_add=True, null=True)
-    created_at = models.DateTimeField(default=datetime.now(), blank=False)
+    delivery_date = models.DateField(null=True)
+    created_at = models.DateField(auto_now_add=True,null=True)
     post = models.ForeignKey(
         Post, related_name="offer_post", on_delete=models.CASCADE)
     status = models.BooleanField(

@@ -27,9 +27,6 @@ class OfferViewset(viewsets.ModelViewSet):
                 print(postPicture,"*****************************")
                 postPicture = post.postpicture
                 print(postPicture,"*****************************")
-           
-
-           
         if self.request.user.is_authenticated:
             print(self.request.user)
             instance = serializer.save(ownerProfilePic=self.request.user.ProfilePic,
@@ -37,3 +34,4 @@ class OfferViewset(viewsets.ModelViewSet):
 
         else:
             instance = serializer.save()
+
