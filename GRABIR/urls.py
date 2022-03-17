@@ -25,6 +25,7 @@ from GRABIR.apps.deals import urls as deals_urls
 from GRABIR.apps.offers import urls as offers_urls
 from GRABIR.apps.payments import urls as payments_urls
 from GRABIR.apps.posts import urls as posts_urls
+from GRABIR.apps.notification import urls as notification_urls
 # for post image
 from django.conf.urls.static import static
 from django.conf import settings
@@ -37,4 +38,5 @@ urlpatterns = [
     path('offers/', include( offers_urls, namespace='offers')),
     path('posts/', include( posts_urls, namespace='posts')),
     path('payments/', include( payments_urls, namespace='payments')),
+    path('notification/', include( notification_urls, namespace='notification')),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
