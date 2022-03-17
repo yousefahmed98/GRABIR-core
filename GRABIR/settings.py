@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "GRABIR.apps.deals",
     "GRABIR.apps.offers",
     "GRABIR.apps.payments",
+    "GRABIR.apps.rate",
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
