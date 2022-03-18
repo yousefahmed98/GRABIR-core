@@ -35,7 +35,7 @@ class RegisterView(generics.GenericAPIView):
         serializer.save()
         user_data = serializer.data
         user = CustomUser.objects.get(email=user_data['email'])
-        user.set_password(user_data['password'])
+        user.set_password(user.password)
         user.save()
         user_data["exp"] = datetime.datetime.now(
             tz=datetime.timezone.utc) + datetime.timedelta(seconds=120)
@@ -45,9 +45,9 @@ class RegisterView(generics.GenericAPIView):
         relativeLink = '/base/email-verify'
         absurl = 'http://'+current_site+relativeLink+"?token="+str(token)
         email_body = 'Hi '+user.username + \
-            ' Use the link below to verify your email \n' + absurl
+            ' if you create account on GRABIR Use the link below to verify your email \n' + absurl
         data = {'email_body': email_body, 'to_email': user.email,
-                'email_subject': 'Verify your email'}
+                'email_subject': 'Verify your GRABIR email'}
         Util.send_email(data)
         return Response(user_data, status=status.HTTP_201_CREATED)
 
@@ -102,7 +102,7 @@ class RequestResetPassword(generics.GenericAPIView):
             email_body = 'Hello, \n Use link below to reset your password  \n' + \
                 absurl+"?redirect_url="+redirect_url
             data = {'email_body': email_body, 'to_email': user.email,
-                    'email_subject': 'Reset your passsword'}
+                    'email_subject': 'Reset your passsword GRABIR account'}
             Util.send_email(data)
         return Response({'success': 'We have sent you a link to reset your password'}, status=status.HTTP_200_OK)
 
