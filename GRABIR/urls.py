@@ -42,6 +42,5 @@ urlpatterns = [
     path('rate/', include( rate_urls, namespace='rate')),
     path('password-reset/<uidb64>/<token>/',
         RestPasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
-    
     path('notification/', include( notification_urls, namespace='notification')),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
