@@ -20,7 +20,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 
 from GRABIR.apps.base import urls  as base_urls
-from GRABIR.apps.base.views import VerifyEmail
+from GRABIR.apps.base.views import RestPasswordTokenCheckAPI, VerifyEmail
 from GRABIR.apps.deals import urls as deals_urls
 from GRABIR.apps.offers import urls as offers_urls
 from GRABIR.apps.payments import urls as payments_urls
@@ -39,5 +39,6 @@ urlpatterns = [
     path('posts/', include( posts_urls, namespace='posts')),
     path('payments/', include( payments_urls, namespace='payments')),
     path('rate/', include( rate_urls, namespace='rate')),
-    
+    path('password-reset/<uidb64>/<token>/',
+        RestPasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
