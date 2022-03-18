@@ -35,7 +35,8 @@ class RegisterView(generics.GenericAPIView):
         serializer.save()
         user_data = serializer.data
         user = CustomUser.objects.get(email=user_data['email'])
-
+        user.set_password(user_data['password'])
+        user.save()
         user_data["exp"] = datetime.datetime.now(
             tz=datetime.timezone.utc) + datetime.timedelta(seconds=120)
         token = jwt.encode(user_data, settings.SECRET_KEY,
