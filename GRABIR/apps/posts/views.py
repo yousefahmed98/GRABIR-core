@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class PostViewset(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-id')
     serializer_class = PostSerializer  
     Authentication_classes  = [TokenAuthentication]
 
