@@ -26,6 +26,8 @@ class Post(models.Model):
     created_at = models.DateField(auto_now_add=True,null=True)
     updated_at = models.DateTimeField(auto_now=True,null=True)
     ownerName = models.CharField(null=True,max_length=50)
+    ownerProfilePic = models.FileField(upload_to='images/', null=True, verbose_name="image owner")
+
     # ownerPhoto = models.FileField(upload_to='images/', null=True, verbose_name="Post Picture")
     
     def show_tags(self):
