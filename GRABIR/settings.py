@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "GRABIR.apps.offers",
     "GRABIR.apps.payments",
     "GRABIR.apps.rate",
+    "GRABIR.apps.notification",
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
