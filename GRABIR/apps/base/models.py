@@ -14,7 +14,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(
         _('email address'), blank=False, unique=True, db_index=True)
     is_verified = models.BooleanField(default=False)
-    ProfilePic = models.FileField(upload_to='images/', null=True, verbose_name="User Profile Picture")
+    ProfilePic = models.FileField(upload_to='images/', null=True, verbose_name="User Profile Picture", default="images/avatar.jpg")
     
     def __str__(self):
         return self.email
