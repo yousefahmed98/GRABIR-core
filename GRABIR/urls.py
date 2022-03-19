@@ -20,12 +20,13 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 
 from GRABIR.apps.base import urls  as base_urls
-from GRABIR.apps.base.views import VerifyEmail
+from GRABIR.apps.base.views import RestPasswordTokenCheckAPI, VerifyEmail
 from GRABIR.apps.deals import urls as deals_urls
 from GRABIR.apps.offers import urls as offers_urls
 from GRABIR.apps.payments import urls as payments_urls
 from GRABIR.apps.posts import urls as posts_urls
 from GRABIR.apps.rate import urls as rate_urls
+from GRABIR.apps.notification import urls as notification_urls
 # for post image
 from django.conf.urls.static import static
 from django.conf import settings
@@ -39,5 +40,7 @@ urlpatterns = [
     path('posts/', include( posts_urls, namespace='posts')),
     path('payments/', include( payments_urls, namespace='payments')),
     path('rate/', include( rate_urls, namespace='rate')),
-    
+    path('password-reset/<uidb64>/<token>/',
+        RestPasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
+    path('notification/', include( notification_urls, namespace='notification')),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
