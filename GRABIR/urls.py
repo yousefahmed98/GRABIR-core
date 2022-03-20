@@ -31,6 +31,9 @@ from GRABIR.apps.notification import urls as notification_urls
 from django.conf.urls.static import static
 from django.conf import settings
 
+
+admin.site.site_header = 'GRABIR Admin'    
+admin.site.site_title = "GRABIR Admin Portal"
 urlpatterns = [
     path('auth', obtain_auth_token),
     path('admin/', admin.site.urls),
