@@ -33,6 +33,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     'rest_framework',
     "corsheaders",
     'django_filters',
@@ -132,13 +133,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'GRABIR_DB',
-        'USER':'postgres',
+        'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '',
     },
 }
-
 
 
 # Password validation
@@ -174,11 +174,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+# STATIC_ROOT = "/home/smart/GraduationProject/GRABIR-core/GRABIR/static"
 STATIC_URL = 'static/'
-# for post image 
+# for post image
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'GRABIR-core')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'GRABIR-core')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -191,3 +191,46 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ITIemailPython@gmail.com'
 EMAIL_HOST_PASSWORD = 'ITIPASS123'
+
+JAZZMIN_SETTINGS = {
+    "site_title": "GRABIR",
+    "site_header": "GRABIR",
+    "site_brand": "GRABIR",
+    "site_icon": "images/avatar2male_64ltxWT.png",
+     "user_avatar": "images/avatar2male_64ltxWT.png",
+    "site_logo_classes": "img-circle",
+    "welcome_sign": "Welcome to GRABIR-APP",
+    "copyright": "GRABIR",
+    "show_ui_builder": True
+}
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-warning",
+    "accent": "accent-warning",
+    "navbar": "navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-warning",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "cyborg",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-outline-info",
+        "warning": "btn-outline-warning",
+        "danger": "btn-outline-danger",
+        "success": "btn-outline-success"
+    }
+}
