@@ -1,0 +1,30 @@
+<img
+                      src={
+                        offer.offer_owner == 4
+                          ? "http://127.0.0.1:8000/media/images/avatarFemal.jpg"
+                          : offer.offer_owner == 8
+                          ? "http://127.0.0.1:8000/media/images/avatar2male_z8LbbBy.png"
+                          : offer.offer_owner == 3
+                          ? "http://127.0.0.1:8000/media/images/avatarMale.jpg"
+                          : "http://127.0.0.1:8000/media/images/Female-Avatar-2.png"
+                      }
+                      className="me-2 userImage"
+                      height="80"
+                      alt="ProfilePic"
+                      loading="lazy"
+                    />
+                  }
+                  action={
+                    <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title={
+                    offer.offer_owner == 4
+                      ? "Rahma"
+                      : offer.offer_owner == 8
+                      ? "Sherif"
+                      : offer.offer_owner == 3
+                      ? "Ahmed"
+                      : "Nehal"
+                  }
