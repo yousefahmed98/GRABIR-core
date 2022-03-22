@@ -15,7 +15,7 @@ class OfferViewset(viewsets.ModelViewSet):
     queryset = Offer.objects.all().order_by('-id')
     serializer_class = OfferSerializer
     Authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         posts = Post.objects.all()
