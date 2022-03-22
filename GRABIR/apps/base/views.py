@@ -137,3 +137,20 @@ class SetNewPasswordAPIView(generics.GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response({'success': True, 'message': 'Password reset success'}, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def EmailReceiver(request):
+    if request.method == 'POST':
+        try:
+            user_email = request.POST["email"]
+            email_body =  request.POST["body"]
+            print(email_body)
+            email_body += "\nfrom  : " + user_email
+            print(email_body)
+            email_subject = request.POST["subject"]
+            data = {'email_body': email_body, 'to_email': "grabiremail@gmail.com",
+                    'email_subject': email_subject}
+            Util.send_email(data)
+            return Response({'success' : "email sent"} , status=status.HTTP_200_OK)
+        except:
+            return Response({'error': 'could not send email'}, status=status.HTTP_400_BAD_REQUEST)
