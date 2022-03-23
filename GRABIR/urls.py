@@ -26,6 +26,7 @@ from GRABIR.apps.offers import urls as offers_urls
 from GRABIR.apps.payments import urls as payments_urls
 from GRABIR.apps.posts import urls as posts_urls
 from GRABIR.apps.rate import urls as rate_urls
+from GRABIR.apps.msg import urls as msg_urls
 from GRABIR.apps.notification import urls as notification_urls
 # for post image
 from django.conf.urls.static import static
@@ -42,6 +43,7 @@ urlpatterns = [
     path('offers/', include( offers_urls, namespace='offers')),
     path('posts/', include( posts_urls, namespace='posts')),
     path('payments/', include( payments_urls, namespace='payments')),
+    path('msg/', include( msg_urls, namespace='msg')),
     path('rate/', include( rate_urls, namespace='rate')),
     path('password-reset/<uidb64>/<token>/',
         RestPasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
