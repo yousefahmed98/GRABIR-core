@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     'django_filters',
-    'rest_framework.authtoken',
     'phonenumber_field',
     'django.contrib.admin',
     'django.contrib.auth',
