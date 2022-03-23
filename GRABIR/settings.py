@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     'django_filters',
-    'rest_framework.authtoken',
     'phonenumber_field',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,6 +51,7 @@ INSTALLED_APPS = [
     "GRABIR.apps.payments",
     "GRABIR.apps.rate",
     "GRABIR.apps.notification",
+    "GRABIR.apps.msg",
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
