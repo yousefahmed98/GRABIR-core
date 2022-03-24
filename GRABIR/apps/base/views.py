@@ -104,7 +104,10 @@ class RequestResetPassword(generics.GenericAPIView):
             data = {'email_body': email_body, 'to_email': user.email,
                     'email_subject': 'Reset your passsword GRABIR account'}
             Util.send_email(data)
-        return Response({'success': 'We have sent you a link to reset your password'}, status=status.HTTP_200_OK)
+            return Response({'success': 'We have sent you a link to reset your password'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'success': 'failed to send the email user not found'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class RestPasswordTokenCheckAPI(generics.GenericAPIView):
