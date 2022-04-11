@@ -94,6 +94,10 @@ $ python manage.py runserver
 - The Admin page contains links: posts, profile, usera, offers, deals, notifications, deals, and messages
 - For normal users, there should be a button that enables the admin to either lock or unlock this user from logging into the system and for the Admin users, this button is not available So, an admin cannot lock another admin
 
+### Admin Dashboard 
+
+![admin dashboard](https://user-images.githubusercontent.com/36454500/162816854-e492f9b3-f3e2-4363-be30-6d83bda58fa2.png)
+
 ## Who we Are?
 - Intensive Code Camp (ICC) - Information Technology Institute (ITI) - The Egyptian Ministry of Communications and Information Technology (MCIT) Students & Teammates
 - We are a Full Stack Web Development Graduates from ITI - Python Stack Track
