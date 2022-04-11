@@ -101,7 +101,7 @@ $ python manage.py runserver
 ## Who we Are?
 - Intensive Code Camp (ICC) - Information Technology Institute (ITI) - The Egyptian Ministry of Communications and Information Technology (MCIT) Students & Teammates
 - We are a Full Stack Web Development Graduates from ITI - Python Stack Track
-- We are introducing a GRABIR website with many features using ReactJS framework as a front-end, django framework as a back-end, and postgresql as a database manager
+- We are introducing a GRABIR website with many features using ReactJS framework as a Frontend, django framework as a Backend, and PostgreSQL as a database manager
 
 ### - Team members
 | Name | Email 📧| 
