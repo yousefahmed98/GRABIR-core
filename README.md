@@ -1,5 +1,5 @@
 # GRABIR Core - Delivery Website
-* [GRABIR UI](#grabir-ui)
+* [GRABIR UI Repository](https://github.com/yousefahmed98/GRABIR-ui)
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
@@ -14,9 +14,6 @@ Each user has his features with profile, posts, offers, deals, notifications, ra
 Normal users can add, edit, delete posts, view others posts, make
 offers, recieve notifications, rate another user, complete deals, pay money to another user with Paypal system. 
 An admin panel to CRUD over the website, manage all the processes on the website, block, unblock users, promote others to be admins.
-
-## GRABIR UI
-https://github.com/yousefahmed98/GRABIR-ui
 
 ## Technologies
 - PYTHON
